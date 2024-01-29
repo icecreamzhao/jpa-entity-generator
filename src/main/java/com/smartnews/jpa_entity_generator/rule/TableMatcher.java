@@ -25,7 +25,7 @@ public interface TableMatcher {
      * @return true if the rule matches.
      */
     default boolean matches(String tableName) {
-        if (StringUtils.isEmpty(getTableName()) && (getTableNames() == null || getTableNames().size() == 0)) {
+        if (StringUtils.isEmpty(getTableName()) && (getTableNames() == null || getTableNames().isEmpty())) {
             // global settings
             return true;
         }
@@ -39,13 +39,13 @@ public interface TableMatcher {
         }
 
         List<String> targets = getTableNames();
-        if (targets != null && targets.isEmpty() == false) {
+        if (targets != null && !targets.isEmpty()) {
             boolean matched = targets.contains(tableName);
             if (matched) {
                 return true;
             } else {
                 for (String target : targets) {
-                    if (tableName.matches(target)) {
+                    if (tableName.toLowerCase().matches(target.toLowerCase())) {
                         return true;
                     }
                 }

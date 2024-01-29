@@ -1,7 +1,5 @@
 package com.smartnews.jpa_entity_generator.gradle;
 
-import lombok.Data;
-
 /**
  * <pre>
  * entityGen {
@@ -9,8 +7,15 @@ import lombok.Data;
  * }
  * </pre>
  */
-@Data
 public class EntityGenExtension {
 
     private String configPath = "entityGenConfig.yml";
+
+    public String getConfigPath() {
+        return configPath;
+    }
+
+    public void setConfigPath(String configPath) {
+        this.configPath = configPath;
+    }
 }

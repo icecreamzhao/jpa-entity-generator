@@ -4,7 +4,7 @@
 jdbcSettings:
   url: "jdbc:h2:file:./sample/db/blog;MODE=MySQL;TRACE_LEVEL_FILE=2;TRACE_LEVEL_SYSTEM_OUT=2"
   username: "user"
-  password: ${DB_PASSWORD}
+  password: pass
   driverClassName: "org.h2.Driver"
 
 # ---------------------------------------------------------
@@ -103,19 +103,19 @@ interfaceRules:
 #         - code (string): writing code in a string value instead of specifying name + value
 #       or
 #       - code (string): write the whole code in a string value instead of specifying className + attributes
-classAnnotationRules:
-  # If you just specify the annotations, all the generated classes'll have them.
-  - annotations:
-      - className: "lombok.ToString"
-
-  # You can specify the classes to have the class annotations.
-  - {classNames: ["ABTest",], annotations: [className: "Deprecated"]}
-  - className: "Blog"
-    annotations:
-      - className: "lombok.Builder"
-        attributes:
-          - name: "toBuilder"
-            value: "true"
+#classAnnotationRules:
+#  # If you just specify the annotations, all the generated classes'll have them.
+#  - annotations:
+#      - className: "lombok.ToString"
+#
+#  # You can specify the classes to have the class annotations.
+#  - {classNames: ["ABTest",], annotations: [className: "Deprecated"]}
+#  - className: "Blog"
+#    annotations:
+#      - className: "lombok.Builder"
+#        attributes:
+#          - name: "toBuilder"
+#            value: "true"
 
 # ---------------------------------------------------------
 # *** Rules on how to append class comments ***

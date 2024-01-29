@@ -1,7 +1,5 @@
 package com.smartnews.jpa_entity_generator.rule;
 
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +7,6 @@ import java.util.List;
 /**
  * Rule used to generate the type for a given field.
  */
-@Data
 public class FieldTypeRule implements Serializable, FieldMatcher {
 
     private String className;
@@ -17,4 +14,48 @@ public class FieldTypeRule implements Serializable, FieldMatcher {
     private String fieldName;
     private List<String> fieldNames = new ArrayList<>();
     private String typeName;
+
+    @Override
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    @Override
+    public List<String> getClassNames() {
+        return classNames;
+    }
+
+    public void setClassNames(List<String> classNames) {
+        this.classNames = classNames;
+    }
+
+    @Override
+    public String getFieldName() {
+        return fieldName;
+    }
+
+    public void setFieldName(String fieldName) {
+        this.fieldName = fieldName;
+    }
+
+    @Override
+    public List<String> getFieldNames() {
+        return fieldNames;
+    }
+
+    public void setFieldNames(List<String> fieldNames) {
+        this.fieldNames = fieldNames;
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
 }

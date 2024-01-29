@@ -2,7 +2,6 @@ package com.smartnews.jpa_entity_generator.config;
 
 import com.smartnews.jpa_entity_generator.rule.*;
 import com.smartnews.jpa_entity_generator.util.ResourceReader;
-import lombok.Data;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.*;
@@ -16,7 +15,6 @@ import java.util.regex.Pattern;
 /**
  * Code generator's configuration.
  */
-@Data
 public class CodeGeneratorConfig implements Serializable {
 
     // ----------
@@ -36,21 +34,20 @@ public class CodeGeneratorConfig implements Serializable {
     // Preset
 
     // NOTE: @Table(name = "${tableName}") needs tableName of target table.
-    private static final List<ClassAnnotationRule> PRESET_CLASS_ANNOTATIONS = Arrays.asList(
-            ClassAnnotationRule.createGlobal(Annotation.fromClassName("lombok.Data"))
-    );
+//    private static final List<ClassAnnotationRule> PRESET_CLASS_ANNOTATIONS = List.of(
+//            ClassAnnotationRule.createGlobal(Annotation.fromClassName("lombok.Data")));
 
     private static final List<ImportRule> PRESET_IMPORTS = Arrays.asList(
             ImportRule.createGlobal("java.sql.*"),
             // Can be removed after no javax support and replace to jakarta.persistence.*
-            ImportRule.createGlobal("javax.persistence.*"),
-            ImportRule.createGlobal("lombok.Data")
+            ImportRule.createGlobal("javax.persistence.*")
+//            ImportRule.createGlobal("lombok.Data")
     );
 
     private static final List<ImportRule> PRESET_JAKARTA_IMPORTS = Arrays.asList(
             ImportRule.createGlobal("java.sql.*"),
-            ImportRule.createGlobal("jakarta.persistence.*"),
-            ImportRule.createGlobal("lombok.Data")
+            ImportRule.createGlobal("jakarta.persistence.*")
+//            ImportRule.createGlobal("lombok.Data")
     );
 
     // Can be removed after no javax support
@@ -114,7 +111,7 @@ public class CodeGeneratorConfig implements Serializable {
     }
 
     public void setUpPresetRules() {
-        getClassAnnotationRules().addAll(0, PRESET_CLASS_ANNOTATIONS);
+//        getClassAnnotationRules().addAll(0, PRESET_CLASS_ANNOTATIONS);
         if (useJakarta) {
             getImportRules().addAll(0, PRESET_JAKARTA_IMPORTS);
         } else {
@@ -186,4 +183,202 @@ public class CodeGeneratorConfig implements Serializable {
         }
     }
 
+    public JDBCSettings getJdbcSettings() {
+        return jdbcSettings;
+    }
+
+    public void setJdbcSettings(JDBCSettings jdbcSettings) {
+        this.jdbcSettings = jdbcSettings;
+    }
+
+    public List<String> getTableNames() {
+        return tableNames;
+    }
+
+    public void setTableNames(List<String> tableNames) {
+        this.tableNames = tableNames;
+    }
+
+    public String getTableScanMode() {
+        return tableScanMode;
+    }
+
+    public void setTableScanMode(String tableScanMode) {
+        this.tableScanMode = tableScanMode;
+    }
+
+    public List<TableScanRule> getTableScanRules() {
+        return tableScanRules;
+    }
+
+    public void setTableScanRules(List<TableScanRule> tableScanRules) {
+        this.tableScanRules = tableScanRules;
+    }
+
+    public List<TableExclusionRule> getTableExclusionRules() {
+        return tableExclusionRules;
+    }
+
+    public void setTableExclusionRules(
+            List<TableExclusionRule> tableExclusionRules) {
+        this.tableExclusionRules = tableExclusionRules;
+    }
+
+    public String getGeneratedValueStrategy() {
+        return generatedValueStrategy;
+    }
+
+    public void setGeneratedValueStrategy(String generatedValueStrategy) {
+        this.generatedValueStrategy = generatedValueStrategy;
+    }
+
+    public String getOutputDirectory() {
+        return outputDirectory;
+    }
+
+    public void setOutputDirectory(String outputDirectory) {
+        this.outputDirectory = outputDirectory;
+    }
+
+    public String getPackageName() {
+        return packageName;
+    }
+
+    public void setPackageName(String packageName) {
+        this.packageName = packageName;
+    }
+
+    public String getPackageNameForJpa1() {
+        return packageNameForJpa1;
+    }
+
+    public void setPackageNameForJpa1(String packageNameForJpa1) {
+        this.packageNameForJpa1 = packageNameForJpa1;
+    }
+
+    public boolean isJpa1SupportRequired() {
+        return jpa1SupportRequired;
+    }
+
+    public void setJpa1SupportRequired(boolean jpa1SupportRequired) {
+        this.jpa1SupportRequired = jpa1SupportRequired;
+    }
+
+    public boolean isJsr305AnnotationsRequired() {
+        return jsr305AnnotationsRequired;
+    }
+
+    public void setJsr305AnnotationsRequired(boolean jsr305AnnotationsRequired) {
+        this.jsr305AnnotationsRequired = jsr305AnnotationsRequired;
+    }
+
+    public boolean isUseJakarta() {
+        return useJakarta;
+    }
+
+    public void setUseJakarta(boolean useJakarta) {
+        this.useJakarta = useJakarta;
+    }
+
+    public boolean isUsePrimitiveForNonNullField() {
+        return usePrimitiveForNonNullField;
+    }
+
+    public void setUsePrimitiveForNonNullField(boolean usePrimitiveForNonNullField) {
+        this.usePrimitiveForNonNullField = usePrimitiveForNonNullField;
+    }
+
+    public boolean isAutoPreparationForLombokBuilderEnabled() {
+        return autoPreparationForLombokBuilderEnabled;
+    }
+
+    public void setAutoPreparationForLombokBuilderEnabled(boolean autoPreparationForLombokBuilderEnabled) {
+        this.autoPreparationForLombokBuilderEnabled = autoPreparationForLombokBuilderEnabled;
+    }
+
+    public List<ImportRule> getImportRules() {
+        return importRules;
+    }
+
+    public void setImportRules(List<ImportRule> importRules) {
+        this.importRules = importRules;
+    }
+
+    public List<ClassNameRule> getClassNameRules() {
+        return classNameRules;
+    }
+
+    public void setClassNameRules(List<ClassNameRule> classNameRules) {
+        this.classNameRules = classNameRules;
+    }
+
+    public List<ClassAnnotationRule> getClassAnnotationRules() {
+        return classAnnotationRules;
+    }
+
+    public void setClassAnnotationRules(
+            List<ClassAnnotationRule> classAnnotationRules) {
+        this.classAnnotationRules = classAnnotationRules;
+    }
+
+    public List<InterfaceRule> getInterfaceRules() {
+        return interfaceRules;
+    }
+
+    public void setInterfaceRules(List<InterfaceRule> interfaceRules) {
+        this.interfaceRules = interfaceRules;
+    }
+
+    public List<ClassAdditionalCommentRule> getClassAdditionalCommentRules() {
+        return classAdditionalCommentRules;
+    }
+
+    public void setClassAdditionalCommentRules(
+            List<ClassAdditionalCommentRule> classAdditionalCommentRules) {
+        this.classAdditionalCommentRules = classAdditionalCommentRules;
+    }
+
+    public List<FieldTypeRule> getFieldTypeRules() {
+        return fieldTypeRules;
+    }
+
+    public void setFieldTypeRules(List<FieldTypeRule> fieldTypeRules) {
+        this.fieldTypeRules = fieldTypeRules;
+    }
+
+    public List<FieldAnnotationRule> getFieldAnnotationRules() {
+        return fieldAnnotationRules;
+    }
+
+    public void setFieldAnnotationRules(
+            List<FieldAnnotationRule> fieldAnnotationRules) {
+        this.fieldAnnotationRules = fieldAnnotationRules;
+    }
+
+    public List<FieldDefaultValueRule> getFieldDefaultValueRules() {
+        return fieldDefaultValueRules;
+    }
+
+    public void setFieldDefaultValueRules(
+            List<FieldDefaultValueRule> fieldDefaultValueRules) {
+        this.fieldDefaultValueRules = fieldDefaultValueRules;
+    }
+
+    public List<FieldAdditionalCommentRule> getFieldAdditionalCommentRules() {
+        return fieldAdditionalCommentRules;
+    }
+
+    public void setFieldAdditionalCommentRules(
+            List<FieldAdditionalCommentRule> fieldAdditionalCommentRules) {
+        this.fieldAdditionalCommentRules = fieldAdditionalCommentRules;
+    }
+
+    public List<AdditionalCodeRule> getAdditionalCodeRules() {
+        return additionalCodeRules;
+    }
+
+    public void setAdditionalCodeRules(
+            List<AdditionalCodeRule> additionalCodeRules) {
+        this.additionalCodeRules = additionalCodeRules;
+    }
 }

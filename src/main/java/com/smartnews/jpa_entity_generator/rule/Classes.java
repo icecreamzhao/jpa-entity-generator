@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Represents an interface.
  */
-public class Interface implements Serializable {
+public class Classes implements Serializable {
     private String name;
     private List<String> genericsClassNames = new ArrayList<>();
 

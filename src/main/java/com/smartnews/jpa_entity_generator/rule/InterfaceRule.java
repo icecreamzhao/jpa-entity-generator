@@ -1,7 +1,5 @@
 package com.smartnews.jpa_entity_generator.rule;
 
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +7,6 @@ import java.util.List;
 /**
  * Rule used to generate an interface.
  */
-@Data
 public class InterfaceRule implements Serializable, ClassMatcher {
 
     /**
@@ -27,4 +24,42 @@ public class InterfaceRule implements Serializable, ClassMatcher {
      */
     private List<Interface> interfaces = new ArrayList<>();
 
+    /**
+     * The classes to be extended.
+     */
+    private List<Classes> classes = new ArrayList<>();
+
+    @Override
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    @Override
+    public List<String> getClassNames() {
+        return classNames;
+    }
+
+    public void setClassNames(List<String> classNames) {
+        this.classNames = classNames;
+    }
+
+    public List<Interface> getInterfaces() {
+        return interfaces;
+    }
+
+    public void setInterfaces(List<Interface> interfaces) {
+        this.interfaces = interfaces;
+    }
+
+    public List<Classes> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(List<Classes> classes) {
+        this.classes = classes;
+    }
 }

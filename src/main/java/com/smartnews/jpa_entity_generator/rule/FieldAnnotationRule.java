@@ -1,7 +1,5 @@
 package com.smartnews.jpa_entity_generator.rule;
 
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +7,6 @@ import java.util.List;
 /**
  * Rule used to generate annotations for a given field.
  */
-@Data
 public class FieldAnnotationRule implements Serializable, FieldMatcher {
 
     private String className;
@@ -18,4 +15,48 @@ public class FieldAnnotationRule implements Serializable, FieldMatcher {
     private List<String> fieldNames = new ArrayList<>();
 
     private List<Annotation> annotations = new ArrayList<>();
+
+    @Override
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    @Override
+    public List<String> getClassNames() {
+        return classNames;
+    }
+
+    public void setClassNames(List<String> classNames) {
+        this.classNames = classNames;
+    }
+
+    @Override
+    public String getFieldName() {
+        return fieldName;
+    }
+
+    public void setFieldName(String fieldName) {
+        this.fieldName = fieldName;
+    }
+
+    @Override
+    public List<String> getFieldNames() {
+        return fieldNames;
+    }
+
+    public void setFieldNames(List<String> fieldNames) {
+        this.fieldNames = fieldNames;
+    }
+
+    public List<Annotation> getAnnotations() {
+        return annotations;
+    }
+
+    public void setAnnotations(List<Annotation> annotations) {
+        this.annotations = annotations;
+    }
 }
