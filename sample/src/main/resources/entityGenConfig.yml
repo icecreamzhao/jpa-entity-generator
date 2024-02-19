@@ -62,7 +62,7 @@ tableScanMode: 'RuleBased'
 #tableScanRules:
 #  - tableNames: ["foo_.*"]
 tableScanRules:
-  - tableNames: ["app_.*", "bt_.*", "client_.*"]
+  - tableNames: ["app_.*", "bt_.*", "client_.*", "sys_.*"]
 
 # ---------------------------------------------------------
 # *** Rules for exclusion ***
@@ -99,7 +99,6 @@ interfaceRules:
   # If you just specify the interfaces, all the generated classes'll implement the interfaces.
 #  - interfaces: [{name: "java.io.Serializable"}]
   - classes: [{name: "com.littleboy.llhb.domain.BaseEntity"}]
-
   - classNames: ["ABTest"]
     interfaces: [{name: "com.example.util.ExpirationPredicate"}]
 

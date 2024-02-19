@@ -83,7 +83,6 @@ public class ${className}<#if interfaceNames.size() \gt 0> implements ${interfac
         return ${field.name};
     }
 </#list>
-
 <#list bottomAdditionalCodeList as code>
     ${code}
 </#list>
