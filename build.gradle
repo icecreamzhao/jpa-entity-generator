@@ -14,14 +14,14 @@ configurations {
 //sourceSets.test.runtimeClasspath += configurations.providedCompile
 
 dependencies {
-    api 'com.google.guava:guava:31.0-jre'
+    api 'com.google.guava:guava:33.2.1-jre'
     api 'org.apache.commons:commons-lang3:3.14.0'
     api 'org.freemarker:freemarker:2.3.32'
     api 'org.yaml:snakeyaml:2.0'
     api 'org.slf4j:slf4j-api:2.0.6'
 //    api 'mysql:mysql-connector-java:8.0.25'
 //    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client:3.2.0'
-    runtimeOnly 'org.postgresql:postgresql:42.7.1'
+    runtimeOnly 'org.postgresql:postgresql:42.7.3'
 //    compileOnly 'org.projectlombok:lombok:1.18.30'
     compileOnly 'jakarta.annotation:jakarta.annotation-api:3.0.0-M1'
     api gradleApi()
@@ -67,11 +67,11 @@ allprojects {
 }
 
 tasks.register('javadocJar', Jar) {
-    classifier = 'javadoc'
+    getArchiveClassifier().set('javadoc')
     from javadoc
 }
 tasks.register('sourcesJar', Jar) {
-    classifier = 'sources'
+    getArchiveClassifier().set('sources')
     from sourceSets.main.allSource
 }
 artifacts {

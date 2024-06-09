@@ -1,5 +1,4 @@
 import com.smartnews.jpa_entity_generator.gradle.EntityGenPlugin
-
 apply plugin: 'java-library'
 
 buildscript {
@@ -12,15 +11,15 @@ buildscript {
         // NOTE: when you need to go with a specific version in your local repo, use the following line instead
         // classpath 'com.smartnews:jpa-entity-generator:0.99.6-SNAPSHOT'
         classpath files('../build/libs/jpa-entity-generator.jar') // running `cd ../; ./gradlew jar` is required
-        classpath 'com.google.guava:guava:31.0-jre'
+        classpath 'com.google.guava:guava:33.2.1-jre'
         classpath 'org.apache.commons:commons-lang3:3.14.0'
         classpath 'org.freemarker:freemarker:2.3.32'
         classpath 'org.yaml:snakeyaml:2.0'
-        classpath 'org.postgresql:postgresql:42.7.1'
+        classpath 'org.postgresql:postgresql:42.7.3'
     }
 }
 
-archivesBaseName = 'sample'
+project.archivesBaseName = 'sample'
 configurations { providedCompile }
 sourceSets.main.compileClasspath += configurations.providedCompile
 sourceSets.test.compileClasspath += configurations.providedCompile
@@ -32,10 +31,10 @@ repositories {
 
 dependencies {
     testImplementation 'com.google.code.findbugs:jsr305:3.0.2'
-    testRuntimeOnly 'org.postgresql:postgresql:42.7.1'
-    testImplementation 'org.springframework.data:spring-data-jpa:2.1.11.RELEASE'
-    testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.0.1.RELEASE'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.0.1.RELEASE'
+    testRuntimeOnly 'org.postgresql:postgresql:42.7.3'
+    testImplementation 'org.springframework.data:spring-data-jpa:3.3.0'
+    testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.3.0'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.3.0'
     // https://github.com/spring-projects/spring-boot/issues/11042
     testImplementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.1'
 }
